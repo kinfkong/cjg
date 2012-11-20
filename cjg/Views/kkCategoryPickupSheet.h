@@ -8,6 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface kkCategoryPickupSheet : UIActionSheet
+@class kkCategoryPickupSheet;
+
+@protocol kkCategoryPickupSheetDelegate <NSObject>
+
+@optional
+-(void) onCategoryUpdate:(kkCategoryPickupSheet *) sheet name:(NSString*) name;
+
+@end
+
+@interface kkCategoryPickupSheet : UIActionSheet <UIActionSheetDelegate, UIPickerViewDataSource, UIPickerViewDelegate> {
+    NSArray* categories;
+    id<kkCategoryPickupSheetDelegate> sheetDelegate;
+
+}
+
+@property(nonatomic, retain) id<kkCategoryPickupSheetDelegate> sheetDelegate;
+-(id) initTogether:(NSString *) currentCategory;
 
 @end

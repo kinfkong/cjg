@@ -8,7 +8,8 @@
 
 #import "KKNetworkLoadingView.h"
 #import <QuartzCore/QuartzCore.h>
-#import "XMLHelper.h"
+#import "SBJson.h"
+
 
 
 @implementation KKNetworkLoadingView
@@ -37,11 +38,11 @@
 		} else {
 			label.text = @"加载中...";
 		}
-		label.textAlignment = UITextAlignmentCenter;
+		label.textAlignment = NSTextAlignmentCenter;
 		label.textColor = [UIColor whiteColor];
 		label.tag = 222;
 		[self addSubview:label];
-		[label release];
+		//[label release];
 		
 		
 		UIActivityIndicatorView* activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30.f, 30.f)]; 
@@ -50,18 +51,18 @@
 		activityIndicator.tag = 111;
 		[self addSubview:activityIndicator];
 		[activityIndicator startAnimating];
-		[activityIndicator release];
+		//[activityIndicator release];
 		
 		UILabel* tmpLabel = [[UILabel alloc] initWithFrame:activityIndicator.frame];
 		tmpLabel.backgroundColor = [UIColor clearColor];
 		tmpLabel.text = @"!";
 		tmpLabel.font = [UIFont systemFontOfSize:30];
-		tmpLabel.textAlignment = UITextAlignmentCenter;
+		tmpLabel.textAlignment = NSTextAlignmentCenter;
 		tmpLabel.textColor = [UIColor whiteColor];
 		tmpLabel.tag = 333;
 		[self addSubview:tmpLabel];
 		tmpLabel.hidden = YES;
-		[tmpLabel release];
+		//[tmpLabel release];
 		
 		receivedData = [[NSMutableData alloc] init];
 		[NSURLConnection connectionWithRequest:request delegate:self];
@@ -91,9 +92,11 @@
 	NSString* result = [[NSString alloc] initWithBytes:[receivedData bytes] length:[receivedData length] encoding:NSUTF8StringEncoding];
 	NSLog(@"the result:%@", result);
 	*/
+    /*
 	XMLHelper* helper = [[XMLHelper alloc] init];
 	NSDictionary* dict = [helper parseXML2Dictionary:receivedData];
-	[helper release];
+	[helper release];*/
+    NSDictionary* dict = [receivedData JSONValue];
 	if (dict == nil) {
 		return [self connection:connection didFailWithError:nil];
 	} 
@@ -136,12 +139,6 @@
 	if ([self.delegate respondsToSelector:@selector(view:onFailedLoading:)]) {
 		[self.delegate view:self onFailedLoading:error];
 	}
-}
-
-- (void)dealloc {
-	[receivedData release];
-	[delegate release];
-    [super dealloc];
 }
 
 

@@ -20,10 +20,7 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -42,19 +39,17 @@
 - (void)loadView
 {
     [super loadView];
-    
-    UIImageView* imageView = [[UIImageView alloc] initWithFrame:CGRectMake(-20, -95, self.view.frame.size.width + 38, self.view.frame.size.height + 80)];
-    [self.view addSubview:imageView];
-    imageView.image = [UIImage imageNamed:@"paper_bg.jpg"];
-    [imageView release];
-    textView = [[UITextView alloc] initWithFrame:CGRectMake(15, 10, self.view.frame.size.width - 15, self.view.frame.size.height - 65)];
+    CGFloat offHeight = self.navigationController.navigationBar.frame.size.height;
+    CGFloat height = self.view.frame.size.height - self.tabBarController.tabBar.frame.size.height - offHeight;
+    //[imageView release];
+    textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, height)];
     textView.textColor = [UIColor blackColor];
     //textView.text = @"I am texting";
     textView.editable = NO;
     textView.font = [UIFont systemFontOfSize:15];
-    textView.backgroundColor = [UIColor clearColor];
+    textView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:textView];
-    [textView release];
+    //[textView release];
 }
 
 -(void) setText:(NSString *) text {

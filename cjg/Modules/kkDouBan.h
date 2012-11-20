@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface kkDouBan : NSObject
+@interface kkDouBan : NSObject {
+}
+
+-(NSDictionary *) getBookInfo:(NSString*) isbn;
+
+-(NSArray *) searchBooks:(NSString *) query From:(NSInteger) from Num:(NSInteger) num;
 
 @end

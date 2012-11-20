@@ -7,7 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "kkDBMgr.h"
 
-@interface kkFactory : NSObject
+@interface kkFactory : NSObject {
+    kkDBMgr* dbmgr;
+}
+
++(kkFactory *) getInstance;
+
+
+-(kkDBMgr *) getDBMgr;
 
 @end

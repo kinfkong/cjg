@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Mybook.h"
 
-@interface kkBookEntity : NSObject
+@interface kkBookEntity : NSObject {
+}
 
++(NSDictionary *) object2Dict:(Mybook *) book;
++(NSDictionary *) doubanJSON2Dict:(NSDictionary *) douban;
++(void) dict2Object:(NSDictionary *) dict book:(Mybook *) book;
 @end

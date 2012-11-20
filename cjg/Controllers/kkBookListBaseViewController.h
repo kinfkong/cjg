@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "kkBookTableView.h"
 
-@interface kkBookListBaseViewController : UIViewController
+@interface kkBookListBaseViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, kkBookTableViewDelegate> {
+    NSString* type;
+    kkBookTableView* tableView;
+}
 
+-(id) initWithType:(NSString* ) type;
+
+-(void) setType:(NSString*) _type;
 @end

@@ -8,6 +8,24 @@
 
 #import "kkFactory.h"
 
+static kkFactory* instance = nil;
+
 @implementation kkFactory
+
+-(id) init {
+    dbmgr = [[kkDBMgr alloc] init];
+    return self;
+}
+
++(kkFactory *) getInstance {
+    if (instance == nil) {
+        instance = [[kkFactory alloc] init];
+    }
+    return instance;
+}
+
+-(kkDBMgr *) getDBMgr {
+    return dbmgr;
+}
 
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GameKit/GameKit.h>
+#import <StoreKit/StoreKit.h>
 
-@interface kkMoreViewController : UIViewController
+@interface kkMoreViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, GKLeaderboardViewControllerDelegate>{
+    IBOutlet UITableView* tableView;
+    IBOutlet UIActivityIndicatorView* av;
+    IBOutlet UIView* processingView;
+}
 
 @end

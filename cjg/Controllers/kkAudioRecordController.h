@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface kkAudioRecordController : UIViewController
+@interface kkAudioRecordController : UIViewController <UITableViewDataSource, UITableViewDelegate, AVAudioPlayerDelegate> {
+    IBOutlet UITableView* tableView;
+    NSArray* comments;
+    UITableViewCell* basicCell;
+    NSInteger playingRow;
+    AVAudioPlayer* player;
+    NSTimer* playTimer;
+}
+
+
+-(id) initWithComments:(NSArray*) comments;
 
 @end

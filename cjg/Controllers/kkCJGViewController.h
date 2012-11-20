@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "kkBookListBaseViewController.h"
 
-@interface kkCJGViewController : UIViewController
+@interface kkCJGViewController : kkBookListBaseViewController <UIActionSheetDelegate> {
+}
 
 @end

@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface kkTagDisplayViewController : UIViewController
+@interface kkTagDisplayViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>{
+    //UIWebView* webView;
+    IBOutlet UITableView* tableView;
+    NSString* type;
+    NSArray* dataSourceArray;
+}
 
+-(id) initWithType:(NSString*) type;
 @end

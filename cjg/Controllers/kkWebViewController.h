@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface kkWebViewController : UIViewController
+@interface kkWebViewController : UIViewController <UIWebViewDelegate> {
+    IBOutlet UIWebView* webView;
+    IBOutlet UIActivityIndicatorView* aview;
+    NSString* url;
+}
 
+-(id) initWithURL:(NSString *) url;
 @end

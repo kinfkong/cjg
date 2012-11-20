@@ -45,11 +45,11 @@
 	NSString* filePath = [UIImage getFilePathOfURL:url];
 	UIImage* image = [UIImage imageWithContentsOfFile:filePath];
 	if (image == nil) {
-				NSLog(@"here1:url%@", url);
+				//NSLog(@"here1:url%@", url);
 		NSData* content = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-		NSLog(@"the content length:%d", [content length]);
+		//NSLog(@"the content length:%d", [content length]);
 		image = [UIImage imageWithData:content];
-		NSLog(@"here2:%@", image);
+		//NSLog(@"here2:%@", image);
 		NSData *data = UIImagePNGRepresentation(image);
 		NSFileManager *fileManager = [NSFileManager defaultManager];
 		[fileManager createFileAtPath:filePath contents:data attributes:nil];

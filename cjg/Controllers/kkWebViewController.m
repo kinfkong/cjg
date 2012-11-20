@@ -27,6 +27,26 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSURL* theurl = [NSURL URLWithString:url];
+    NSURLRequest* request = [NSURLRequest requestWithURL:theurl];
+    webView.delegate = self;
+    [webView loadRequest:request];
+
+    [aview startAnimating];
+    
+    self.navigationItem.title = @"网页浏览";
+}
+
+-(id) initWithURL:(NSString *) _url {
+    self = [super init];
+    if (self) {
+        url = _url;
+    }
+    return self;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [aview stopAnimating];
 }
 
 - (void)didReceiveMemoryWarning

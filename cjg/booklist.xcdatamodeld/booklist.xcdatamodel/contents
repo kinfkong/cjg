@@ -1,4 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="booklist" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11E53" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="11E53" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Author" representedClassName="Author" syncable="YES">
+        <attribute name="modify_date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="book" optional="YES" minCount="1" maxCount="1" deletionRule="No Action" destinationEntity="Mybook" inverseName="authors" inverseEntity="Mybook" syncable="YES"/>
+    </entity>
+    <entity name="Category" representedClassName="Category" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="book" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Mybook" inverseName="category" inverseEntity="Mybook" syncable="YES"/>
+    </entity>
+    <entity name="CustomCategory" representedClassName="CustomCategory" syncable="YES">
+        <attribute name="modify_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="Mybook" representedClassName="Mybook" syncable="YES">
+        <attribute name="author" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="author_info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="detail_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="is_mine" optional="YES" attributeType="Boolean" indexed="YES" syncable="YES"/>
+        <attribute name="isbn" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="modify_time" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pubdate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="publisher" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="authors" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Author" inverseName="book" inverseEntity="Author" syncable="YES"/>
+        <relationship name="category" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="book" inverseEntity="Category" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VComment" syncable="YES"/>
+        <relationship name="latest_comment" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="VComment" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="Tag" inverseName="book" inverseEntity="Tag" syncable="YES"/>
+        <compoundIndexes>
+            <compoundIndex>
+                <index value="status"/>
+                <index value="modify_time"/>
+            </compoundIndex>
+        </compoundIndexes>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="book" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Mybook" inverseName="tags" inverseEntity="Mybook" syncable="YES"/>
+    </entity>
+    <entity name="VComment" representedClassName="VComment" syncable="YES">
+        <attribute name="create_time" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="file" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Author" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="Mybook" positionX="90" positionY="-720" width="128" height="345"/>
+        <element name="Tag" positionX="-261" positionY="-594" width="108" height="75"/>
+        <element name="VComment" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="CustomCategory" positionX="160" positionY="192" width="128" height="75"/>
+        <element name="Category" positionX="160" positionY="192" width="128" height="75"/>
+    </elements>
 </model>
